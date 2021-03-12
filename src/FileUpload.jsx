@@ -11,12 +11,11 @@ const Index = () => {
       setShowLoader(true);
       let file = new FormData();
       file.append("config", selectedFile);
+      console.log("Uploaded File:", selectedFile);
       axios
-        .post("/upload-config-tar", {
-          body: file,
+        .post("/upload-config-tar", file, {
           headers: {
             "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "*",
           },
         })
         .then((response) => {
